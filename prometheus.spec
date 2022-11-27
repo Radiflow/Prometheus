@@ -15,11 +15,6 @@ Metric server
 %setup -q
 
 
-%build
-%configure
-%make_build
-
-
 %install
 rm -rf $RPM_BUILD_ROOT
 useradd --no-create-home --shell /bin/false prometheus
