@@ -5,7 +5,7 @@ spec:
     - name: rpm-builder
       image: 10.0.2.6:8083/rpm-builder
       imagePullSecrets:
-      - name: regcred
+      - name: regcred-radiflow
       command:
         - cat
       tty: true
