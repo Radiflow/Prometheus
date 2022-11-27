@@ -50,6 +50,7 @@ cp prometheus.service $RPM_BUILD_ROOT/etc/systemd/system
 
 %post
 useradd --no-create-home --shell /bin/false prometheus
+chmod +777 /var/lib/prometheus/
 systemctl daemon-reload
 systemctl start prometheus
 
