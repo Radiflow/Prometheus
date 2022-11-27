@@ -5,6 +5,10 @@ pipeline {
       yamlFile 'pod-configuration.yml'
     }
   }
+  environment
+  {
+    NEXUS=credentials('nexus')    
+  } 
   stages
   {
     stage('Build-RPM')
