@@ -19,6 +19,7 @@ pipeline {
             sh 'rpmdev-setuptree'
             sh 'mkdir prometheus-0.0.1'
             sh 'mv prometheus-2.40.2.linux-amd64 prometheus-0.0.1'
+            sh 'ls prometheus-0.0.1'
             sh 'mv Prometheus/prometheus.yml prometheus-0.0.1' 
             sh 'tar --create --file prometheus-0.0.1.tar.gz prometheus-0.0.1'
             sh 'mv prometheus-0.0.1.tar.gz ~/rpmbuild/SOURCES'
