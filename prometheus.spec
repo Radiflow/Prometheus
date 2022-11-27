@@ -41,7 +41,7 @@ chown -R prometheus:prometheus $RPM_BUILD_ROOT/etc/prometheus/consoles
 chown -R prometheus:prometheus $RPM_BUILD_ROOT/etc/prometheus/console_libraries
 
 cp -r prometheus.yml $RPM_BUILD_ROOT/etc/prometheus/prometheus.yml
-chown prometheus:prometheus /etc/prometheus/prometheus.yml
+chown prometheus:prometheus $RPM_BUILD_ROOT/etc/prometheus/prometheus.yml
 
 cp prometheus.service $RPM_BUILD_ROOT/etc/systemd/system
 
