@@ -3,7 +3,7 @@ kind: Pod
 spec:
   containers:  # list of containers that you want present for your build, you can define a default container in the Jenkinsfile
     - name: rpm-builder
-      image: 10.0.2.6:8083/rpm-builder
+      image: noyz/rpm-build:latest
       imagePullSecrets:
       - name: regcred
       command:
