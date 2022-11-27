@@ -21,6 +21,7 @@ mkdir -p $RPM_BUILD_ROOT/usr/local/bin/
 mkdir -p $RPM_BUILD_ROOT/usr/bin/
 mkdir -p $RPM_BUILD_ROOT/etc/prometheus/
 mkdir -p $RPM_BUILD_ROOT/var/lib/prometheus/
+mkdir -p $RPM_BUILD_ROOT/etc/systemd/system
 useradd --no-create-home --shell /bin/false prometheus
 chown prometheus:prometheus $RPM_BUILD_ROOT/etc/prometheus
 chown prometheus:prometheus $RPM_BUILD_ROOT/var/lib/prometheus
