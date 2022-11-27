@@ -23,21 +23,21 @@ mkdir /var/lib/prometheus
 chown prometheus:prometheus /etc/prometheus
 chown prometheus:prometheus /var/lib/prometheus
 cp prometheus $RPM_BUILD_ROOT/%{_bindir}
-cp prometheus /usr/local/bin
-chown prometheus:prometheus /usr/local/bin/prometheus
-chown prometheus:prometheus /usr/bin/prometheus
+cp prometheus $RPM_BUILD_ROOT/usr/local/bin
+chown prometheus:prometheus $RPM_BUILD_ROOT/usr/local/bin/prometheus
+chown prometheus:prometheus $RPM_BUILD_ROOT/usr/bin/prometheus
 
 cp promtool $RPM_BUILD_ROOT/%{_bindir}
-cp promtool /usr/local/bin
-chown prometheus:prometheus /usr/local/bin/promtool
-chown prometheus:prometheus /usr/bin/promtool
+cp promtool $RPM_BUILD_ROOT/usr/local/bin
+chown prometheus:prometheus $RPM_BUILD_ROOT/usr/local/bin/promtool
+chown prometheus:prometheus $RPM_BUILD_ROOT/usr/bin/promtool
 
-cp -r consoles /etc/prometheus
-cp -r console_libraries /etc/prometheus
-chown -R prometheus:prometheus /etc/prometheus/consoles
-chown -R prometheus:prometheus /etc/prometheus/console_libraries
+cp -r consoles $RPM_BUILD_ROOT/etc/prometheus
+cp -r console_libraries $RPM_BUILD_ROOT/etc/prometheus
+chown -R prometheus:prometheus $RPM_BUILD_ROOT/etc/prometheus/consoles
+chown -R prometheus:prometheus $RPM_BUILD_ROOT/etc/prometheus/console_libraries
 
-cp prometheus.service /etc/systemd/system
+cp prometheus.service $RPM_BUILD_ROOT/etc/systemd/system
 
 
 %post
