@@ -19,11 +19,11 @@ Metric server
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/usr/local/bin/
 mkdir -p $RPM_BUILD_ROOT/usr/bin/
-useradd --no-create-home --shell /bin/false prometheus
-mkdir /etc/prometheus
-mkdir /var/lib/prometheus
-chown prometheus:prometheus /etc/prometheus
-chown prometheus:prometheus /var/lib/prometheus
+mkdir -p $RPM_BUILD_ROOT/etc/prometheus/
+mkdir -p $RPM_BUILD_ROOT/var/lib/prometheus/
+
+chown prometheus:prometheus $RPM_BUILD_ROOT/etc/prometheus
+chown prometheus:prometheus $RPM_BUILD_ROOT/var/lib/prometheus
 
 cp prometheus $RPM_BUILD_ROOT/%{_bindir}
 cp prometheus $RPM_BUILD_ROOT/usr/local/bin
@@ -40,10 +40,15 @@ cp -r console_libraries $RPM_BUILD_ROOT/etc/prometheus
 chown -R prometheus:prometheus $RPM_BUILD_ROOT/etc/prometheus/consoles
 chown -R prometheus:prometheus $RPM_BUILD_ROOT/etc/prometheus/console_libraries
 
+cp -r prometheus.yml $RPM_BUILD_ROOT/etc/prometheus/prometheus.yml
+chown prometheus:prometheus /etc/prometheus/prometheus.yml
+
 cp prometheus.service $RPM_BUILD_ROOT/etc/systemd/system
 
 
+
 %post
+useradd --no-create-home --shell /bin/false prometheus
 systemctl daemon-reload
 systemctl start prometheus
 
