@@ -55,7 +55,7 @@ systemctl start prometheus
 
 %files
 /etc/prometheus/*
-/var/lib/prometheus/*
+/var/lib/prometheus
 /usr/local/bin/prometheus
 /usr/bin/prometheus
 /usr/local/bin/promtool
