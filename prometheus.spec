@@ -22,6 +22,7 @@ mkdir /etc/prometheus
 mkdir /var/lib/prometheus
 chown prometheus:prometheus /etc/prometheus
 chown prometheus:prometheus /var/lib/prometheus
+ls
 cp prometheus $RPM_BUILD_ROOT/%{_bindir}
 cp prometheus $RPM_BUILD_ROOT/usr/local/bin
 chown prometheus:prometheus $RPM_BUILD_ROOT/usr/local/bin/prometheus
