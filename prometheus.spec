@@ -1,5 +1,5 @@
 Name:           prometheus
-Version:        0.0.1
+Version:        1.0.0
 Release:        1%{?dist}
 Summary:        Metric server
 
