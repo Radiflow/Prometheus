@@ -13,7 +13,7 @@ alerting:
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
-  - "/etc/mysql-exporter/mysql_exporter_recording_rules.yml"
+  - "/etc/mysql_exporter/mysql_exporter_recording_rules.yml"
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
