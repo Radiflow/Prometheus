@@ -53,6 +53,9 @@ useradd --no-create-home --shell /bin/false prometheus
 chmod +777 /var/lib/prometheus/
 systemctl daemon-reload
 systemctl start prometheus
+systemctl enable prometheus
+
+
 
 %files
 /etc/prometheus/*
