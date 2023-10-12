@@ -17,7 +17,7 @@ pipeline {
       {
         container('rpm-builder')
         {
-          dir(path: '/home/jenkins/agent/workspace') {
+          dir(path: '/home/jenkins/agent/workspace/Monitoring') {
             sh 'wget https://github.com/prometheus/prometheus/releases/download/v2.40.2/prometheus-2.40.2.linux-amd64.tar.gz'
             sh 'tar -xvf prometheus-2.40.2.linux-amd64.tar.gz'
             sh 'rpmdev-setuptree'
