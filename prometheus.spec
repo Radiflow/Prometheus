@@ -1,10 +1,10 @@
 Name:           prometheus
-Version:        1.0.1
+Version:        2.0.0
 Release:        1%{?dist}
 Summary:        Metric server
 
-License:        GPL
-Source0:        %{name}-%{version}.tar.gz
+License:        Radiflow
+
 
 
 BuildRequires:  bash
@@ -32,7 +32,7 @@ rm -rf $RPM_BUILD_ROOT
 
 mkdir -p $RPM_BUILD_ROOT/etc/prometheus/
 mkdir -p $RPM_BUILD_ROOT/etc/alertmanager/
-mkdir -p $RPM_BUILD_ROOT/etc/alertmanager/rules/
+mkdir -p $RPM_BUILD_ROOT/etc/prometheus/rules/
 mkdir -p $RPM_BUILD_ROOT/usr/lib/systemd/system/
 
 
