@@ -23,7 +23,7 @@ Metric server
 rm -rf ~/rpmbuild
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 cd %{_sourcedir}
-git clone git@github.com:Radiflow/Prometheus.git
+git clone -b convert-to-docker git@github.com:Radiflow/Prometheus.git
 docker pull prom/prometheus:latest
 docker pull prom/alertmanager:latest
 
