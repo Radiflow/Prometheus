@@ -1,0 +1,25 @@
+[Unit]
+Description=handles alerts sent by client applications 
+Documentation=https://prometheus.io/docs/alerting/latest/alertmanager/
+Wants=network-online.target
+After=network-online.target docker.service
+
+[Service]
+User=prometheus
+Group=docker
+Type=simple
+Restart=on-failure
+
+ExecStartPre=/usr/bin/docker load --input /etc/alertmanager/alertmanager.tar.gz
+ExecStart=/usr/bin/docker run \
+  --volume=/etc/alertmanager:/etc/alertmanager:ro \
+  --publish=9093:9093 \
+  --name=alertmanager \
+  prom/alertmanager:latest
+
+ExecStop=/usr/bin/docker stop alertmanager 
+ExecStopPost=/usr/bin/docker rm -f alertmanager
+
+
+[Install]
+WantedBy=multi-user.target

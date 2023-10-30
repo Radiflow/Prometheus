@@ -1,0 +1,17 @@
+global:
+  resolve_timeout: 1m
+  slack_api_url: ''
+
+route:
+  repeat_interval: 1h
+  group_interval: 10s
+  group_wait: 10s
+  group_by: ['']
+  receiver: ''
+
+receivers:
+- name: ''
+  slack_configs:
+  - channel: ''
+    send_resolved: true
+    api_url: ''

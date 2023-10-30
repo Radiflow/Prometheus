@@ -1,0 +1,26 @@
+groups:
+- name: Benchmarking
+  rules:
+  - alert: InstanceDown
+    # Condition for alerting
+    expr: probe_http_status_code != 200
+    for: 1m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Instance {{ $labels.instance }} down'
+      description: '{{ $labels.instance }} has been down for more than 1 minute.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'
+
+  - alert: NginxDown
+    # Condition for alerting
+    expr: nginx_up != 1
+    for: 1m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Nginx {{ $labels.instance }} down'
+      description: '{{ $labels.instance }} has been down for more than 1 minute.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'
