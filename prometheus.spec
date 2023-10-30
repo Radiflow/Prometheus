@@ -42,8 +42,8 @@ docker save prom/alertmanager:latest | gzip > $RPM_BUILD_ROOT/etc/alertmanager/a
 cp -r %{_sourcedir}/Prometheus/prometheus/rules/ $RPM_BUILD_ROOT/etc/prometheus/rules
 cp %{_sourcedir}/Prometheus/alertmanager/alertmanager.yml $RPM_BUILD_ROOT/etc/alertmanager/alertmanager.yml
 cp %{_sourcedir}/Prometheus/prometheus/prometheus.yml $RPM_BUILD_ROOT/etc/prometheus/prometheus.yml
-sudo cp %{_sourcedir}/Prometheus/prometheus.service $RPM_BUILD_ROOT/usr/lib/systemd/system/
-sudo cp %{_sourcedir}/Prometheus/alertmanager.service $RPM_BUILD_ROOT/usr/lib/systemd/system/
+sudo cp %{_sourcedir}/Prometheus/prometheus/prometheus.service $RPM_BUILD_ROOT/usr/lib/systemd/system/
+sudo cp %{_sourcedir}/Prometheus/alertmanager/alertmanager.service $RPM_BUILD_ROOT/usr/lib/systemd/system/
 
 %post
 sudo useradd --no-create-home --shell /bin/false prometheus
