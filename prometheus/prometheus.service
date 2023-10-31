@@ -15,7 +15,7 @@ ExecStart=/usr/bin/docker run \
   --volume=/etc/prometheus:/etc/prometheus:ro \
   --publish=9090:9090 \
   --name=prometheus \
-  --add-host host.docker.internal:host-gateway
+  --add-host host.docker.internal:host-gateway \
   prom/prometheus:latest
 
 ExecStop=/usr/bin/docker stop prometheus 
