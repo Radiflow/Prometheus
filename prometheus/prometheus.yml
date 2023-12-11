@@ -4,16 +4,16 @@ global:
   evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
   # scrape_timeout is set to the global default (10s).
 
-# Alertmanager configuration
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-            - host.docker.internal:9093
+# # Alertmanager configuration
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets:
+#             - host.docker.internal:9093
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-  - "/etc/prometheus/rules/isid.rules.yml"
+# rule_files:
+#   - "/etc/prometheus/rules/isid.rules.yml"
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
