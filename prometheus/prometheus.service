@@ -1,6 +1,7 @@
 [Unit]
 Description=Prometheus Monitor server
 Documentation=https://prometheus.io/
+Wants=docker.service
 After=docker.service
 After=network-online.target
 
