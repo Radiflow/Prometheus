@@ -6,8 +6,8 @@ After=docker.service
 After=network-online.target
 
 [Service]
-User=prometheus
-Group=docker
+User=root
+Group=root
 Type=simple
 Restart=on-failure
 
