@@ -9,7 +9,7 @@ After=network-online.target
 User=root
 Group=root
 Type=simple
-Restart=on-failure
+Restart=always
 
 ExecStartPre=/usr/bin/docker load --input /etc/prometheus/prometheus.tar.gz
 ExecStart=/usr/bin/docker run \
