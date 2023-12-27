@@ -25,7 +25,7 @@ mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 cd %{_sourcedir}
 git clone -b convert-to-docker git@github.com:Radiflow/Prometheus.git
 docker pull prom/prometheus:latest
-
+docker tag prom/prometheus:latest prometheus:latest
 %install
 rm -rf $RPM_BUILD_ROOT
 
@@ -34,7 +34,7 @@ mkdir -p $RPM_BUILD_ROOT/etc/prometheus/rules/
 mkdir -p $RPM_BUILD_ROOT/usr/lib/systemd/system/
 
 
-docker save prom/prometheus:latest | gzip > $RPM_BUILD_ROOT/etc/prometheus/prometheus.tar.gz
+docker save prometheus:latest | gzip > $RPM_BUILD_ROOT/etc/prometheus/prometheus.tar.gz
 
 cp -r %{_sourcedir}/Prometheus/prometheus/rules/ $RPM_BUILD_ROOT/etc/prometheus/rules
 cp %{_sourcedir}/Prometheus/prometheus/prometheus.yml $RPM_BUILD_ROOT/etc/prometheus/prometheus.yml
