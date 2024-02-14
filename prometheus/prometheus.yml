@@ -47,17 +47,18 @@ scrape_configs:
       - targets: ['host.docker.internal:9200']
 
   - job_name: 'isids-federation'
-    scrape_interval: 5s
-    scrape_timeout: 4s
+    scrape_interval: 1m
+    scrape_timeout: 45s
     metrics_path: '/isids/prometheus'
     relabel_configs:
       # We use relabeling to dynamically add the instanceId param to the api url
       - source_labels: [instanceId]
         target_label: __metrics_path__
         replacement: '/isids/prometheus/${1}'
-    params:
-      'match[]':
-        - '{job="node_exporter"}' # TODO: check if rest are needed
+  params:
+    # Match all jobs
+    'match[]':
+      - '{__name__=~".+"}'
     http_sd_configs:
       - url: 'http://host.docker.internal:9823/isids/prometheus/targets'
-        refresh_interval: 20s
+        refresh_interval: 1m
