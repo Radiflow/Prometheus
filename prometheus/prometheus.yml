@@ -5,6 +5,7 @@ scrape_configs:
       - targets: ['localhost:9090']
         labels:
           instanceName: 'self'
+          instanceId: 'selfId'
 
   - job_name: node_exporter
     scrape_interval: 1m
@@ -14,6 +15,7 @@ scrape_configs:
       - targets: ['host.docker.internal:9100']
         labels:
           instanceName: 'self'
+          instanceId: 'selfId'
 
   - job_name: systemd_exporter
     scrape_interval: 1m
@@ -23,6 +25,7 @@ scrape_configs:
       - targets: ['host.docker.internal:9558']
         labels:
           instanceName: 'self'
+          instanceId: 'selfId'
 
   - job_name: docker_exporter
     metrics_path: '/metrics'
@@ -30,6 +33,7 @@ scrape_configs:
       - targets: ['host.docker.internal:9200']
         labels:
           instanceName: 'self'
+          instanceId: 'selfId'
 
   - job_name: 'federation'
     scrape_interval: 1m
@@ -37,12 +41,12 @@ scrape_configs:
     metrics_path: '/isids/prometheus'
     relabel_configs:
       # We use relabeling to dynamically add the instanceId param to the api url
-      - source_labels: [instanceId]
+      - source_labels: [instanceName]
         target_label: __metrics_path__
         replacement: '/isids/prometheus/${1}' # Use the instanceId as part of the metrics scrape url path
     params:
       'match[]':
-        - '{__name__=~".+"}'
+        - '{job!=""}' # Match all jobs
     http_sd_configs:
       - url: 'http://host.docker.internal:9823/isids/prometheus/targets'
         refresh_interval: 2m
