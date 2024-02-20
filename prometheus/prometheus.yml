@@ -34,7 +34,7 @@ scrape_configs:
         labels:
           instanceName: 'self'
           instanceId: 'selfId'
-
+  # iSIDs federation. Scrape every https iSID's prometheus
   - job_name: 'federation'
     scrape_interval: 1m
     scrape_timeout: 45s
@@ -43,7 +43,7 @@ scrape_configs:
       # We use relabeling to dynamically add the instanceId param to the api url
       - source_labels: [instanceName]
         target_label: __metrics_path__
-        replacement: '/isids/prometheus/${1}' # Use the instanceId as part of the metrics scrape url path
+        replacement: '/isids/prometheus/${1}'
     params:
       'match[]':
         - '{job!=""}' # Match all jobs
