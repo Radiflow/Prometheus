@@ -48,5 +48,5 @@ scrape_configs:
       'match[]':
         - '{job!=""}' # Match all jobs
     http_sd_configs:
-      - url: 'http://host.docker.internal:9823/isids/prometheus/targets'
+      - url: 'http://host.docker.internal:9823/isids/prometheus/targets' # icen-entity-manager route
         refresh_interval: 2m
