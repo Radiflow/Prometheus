@@ -1,5 +1,5 @@
 Name:           prometheus
-Version:        2.0.0
+Version:        3.0.0
 Release:        1%{?dist}
 Summary:        Metric server
 
@@ -23,7 +23,7 @@ Metric server
 rm -rf ~/rpmbuild
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 cd %{_sourcedir}
-git clone -b convert-to-docker git@github.com:Radiflow/Prometheus.git
+git clone -b icen-prometheus-init git@github.com:Radiflow/Prometheus.git
 docker pull prom/prometheus:latest
 docker tag prom/prometheus:latest prometheus:latest
 %install
