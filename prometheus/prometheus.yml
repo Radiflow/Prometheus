@@ -8,32 +8,28 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
         labels:
-          instanceName: 'self'
-          instanceId: 'selfId'
+          instanceName: '--Local--'
 
   - job_name: node_exporter
     metrics_path: '/metrics'
     static_configs:
       - targets: ['host.docker.internal:9100']
         labels:
-          instanceName: 'self'
-          instanceId: 'selfId'
+          instanceName: '--Local--'
 
   - job_name: systemd_exporter
     metrics_path: '/metrics'
     static_configs:
       - targets: ['host.docker.internal:9558']
         labels:
-          instanceName: 'self'
-          instanceId: 'selfId'
+          instanceName: '--Local--'
 
   - job_name: docker_exporter
     metrics_path: '/metrics'
     static_configs:
       - targets: ['host.docker.internal:9200']
         labels:
-          instanceName: 'self'
-          instanceId: 'selfId'
+          instanceName: '--Local--'
 
   # iSIDs federation. Scrape every https iSID's prometheus
   - job_name: 'federation'
