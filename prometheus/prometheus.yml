@@ -34,7 +34,7 @@ scrape_configs:
   # iSIDs federation. Scrape every https iSID's prometheus
   - job_name: 'federation'
     scrape_interval: 1m
-    scrape_timeout: 45s
+    scrape_timeout: 58s
     metrics_path: '/isids/prometheus'
     relabel_configs:
       # We use relabeling to dynamically add the instanceId param to the api url
