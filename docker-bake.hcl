@@ -8,6 +8,6 @@ variable "tgt" {
 target "prometheus" {
   dockerfile  = "Dockerfile"
   name = "prometheus-${tgt}"
-  context    = "${tgt}"
+  context    = "conf/${tgt}"
   tags   = ["10.0.2.6:8083/prometheus:${TAG}-${tgt}"]
 }
