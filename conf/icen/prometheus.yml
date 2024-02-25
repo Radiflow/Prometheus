@@ -1,0 +1,45 @@
+scrape_configs:
+  - job_name: 'prometheus'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          instanceName: '--Local--'
+
+  - job_name: node_exporter
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['host.docker.internal:9100']
+        labels:
+          instanceName: '--Local--'
+
+  - job_name: systemd_exporter
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['host.docker.internal:9558']
+        labels:
+          instanceName: '--Local--'
+
+  - job_name: docker_exporter
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['host.docker.internal:9200']
+        labels:
+          instanceName: '--Local--'
+
+  # iSIDs federation. Scrape every https iSID's prometheus
+  - job_name: 'federation'
+    scrape_interval: 1m
+    scrape_timeout: 58s
+    metrics_path: '/isids/prometheus'
+    relabel_configs:
+      # We use relabeling to dynamically add the instanceId param to the api url
+      - source_labels: [instanceName]
+        target_label: __metrics_path__
+        replacement: '/isids/prometheus/${1}'
+    params:
+      'match[]':
+        - '{job!=""}' # Match all jobs
+    http_sd_configs:
+      - url: 'http://host.docker.internal:9823/isids/prometheus/targets' # icen-entity-manager route
+        refresh_interval: 1m
