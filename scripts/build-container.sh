@@ -8,7 +8,7 @@ version=$3
 user=$4
 pass=$5
 
-docker login 10.0.2.6:8083 --username $user --password $pass
+sudo docker login 10.0.2.6:8083 --username $user --password $pass
 
     if [ "$isid" == "true" ];
     then
