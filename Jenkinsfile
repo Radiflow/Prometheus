@@ -6,7 +6,7 @@ pipeline {
   {
     versionMajor = 1
     versionMinor = 0
-    versionPatch = 0
+    versionPatch = 1
     newVersion = "${versionMajor}.${versionMinor}.${versionPatch}"
   } 
   stages
